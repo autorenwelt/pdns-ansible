@@ -14,7 +14,7 @@
     name: "{{ item['value']['dbname'] }}"
     state: present
   when: "item.key.split(':')[0] == 'gmysql'"
-  no_log: True
+  no_log: False
   with_dict: "{{ pdns_backends | combine(pdns_mysql_databases_credentials, recursive=True) }}"
 
 - name: Grant PowerDNS access to the MySQL databases
@@ -42,7 +42,7 @@
   when: item.key.split(':')[0] == 'gmysql'
   with_dict: "{{ pdns_backends }}"
   register: _pdns_check_mysql_db
-  no_log: True
+  no_log: False
   changed_when: False
 
 - name: Determine location of the SQL file
