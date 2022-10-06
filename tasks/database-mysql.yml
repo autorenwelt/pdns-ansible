@@ -1,9 +1,9 @@
 ---
 
-- name: Install the MySQL dependencies
-  package:
-    name: "{{ pdns_mysql_packages }}"
-    state: present
+# - name: Install the MySQL dependencies
+#   package:
+#     name: "{{ pdns_mysql_packages }}"
+#     state: present
 
 - name: Create the PowerDNS MySQL databases
   mysql_db:
