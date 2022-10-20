@@ -2,7 +2,7 @@ config-dir={{ pdns_config_dir }}
 setuid={{ pdns_user }}
 setgid={{ pdns_group }}
 {% for config_item, value in pdns_config.items() | sort() %}
-{% if config_item not in ["config-dir", "launch", "setuid", "setgid"] %}
+{% if config_item not in ["config-dir", "launch", "setuid", "setgid", "api_key"] %}
 {% if value is sameas True %}
 {{ config_item }}=yes
 {% elif value is sameas False %}
@@ -18,6 +18,9 @@ setgid={{ pdns_group }}
 {% endif %}
 {% endif %}
 {% endfor %}
+{% if "api_key" in pdns_config %}
+api-key={{ pdns_config.api_key }}
+{% endif %}
 
 launch=
 
